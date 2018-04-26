@@ -16,10 +16,10 @@ The tile should render with the classes...
 
 import React from 'react';
 
-export default function Tile(props){
-  return (
-    <div className="tile" onClick={()=>alert(props.tileId)}>
-      {props.tileId}
-    </div>    
-  );
+export default function Tile(props) {
+    return (
+        <div className="tile" onClick={() => alert(props.tileId)}>
+            {props.tileId}
+        </div>
+    );
 }

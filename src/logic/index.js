@@ -30,9 +30,9 @@ The board array goes from top left to bottom right. For example, the array
 The newGame function will return a valid new game object.
 */
 export const newGame = () => ({
-  state: 'plr1',
-  board: [0,0,0,0,0,0,0,0,0],
-  line: []
+    state: 'plr1',
+    board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    line: []
 });
 
 /*
@@ -46,5 +46,5 @@ an unchanged game will be returned.
 */
 
 export const makeMove = (game, pos) => {
-  // ...to be implemented!
+    // ...to be implemented!
 }

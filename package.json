@@ -1,7 +1,7 @@
 {
   "name": "advjs-reacttictactoe",
   "version": "1.0.0",
-  "description": "Mandatory 2 - Tictactoe game",
+  "description": "Mandatory 2 - Tic-Tac-Toe game",
   "private": true,
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -30,7 +30,10 @@
     "copypublic": "node setupoutput",
     "build": "npm run copypublic && webpack",
     "start:dev": "npm run copypublic && webpack-dev-server",
-    "test": "jest test/* --notify"
+    "test": "jest test/* --notify",
+    "copystyles": "cp ./src/app/styles.css ./public/styles.css",
+    "build:production": "webpack --mode production",
+    "build:all": "npm run copystyles && npm run copypublic && npm run build:production"
   },
   "keywords": [
     "mandatory",

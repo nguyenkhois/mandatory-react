@@ -7,10 +7,10 @@ The component will then render an appropriate message.
 
 import React from 'react';
 
-export default function Message(props){
-  return (
-    <div>
-      Message display here
+export default function Message(props) {
+    return (
+        <div>
+            Message display here
     </div>
-  );
+    );
 }

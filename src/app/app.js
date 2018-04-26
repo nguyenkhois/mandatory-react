@@ -17,50 +17,49 @@ The user should also be able to reset the game.
 The App component should render an outer element with a `container` CSS class,
 and all tiles within an element with a `board` CSS class.
 */
-class Board extends React.Component{
-  //Do stuff
-  renderTile(id){
-    return(
-      <Tile tileId={id}/>
-    )
-  }
+class Board extends React.Component {
+    renderTile(id) {
+        return (
+            <Tile tileId={id} />
+        )
+    }
 
-  //Render
-  render(){
-    return(
-      <div className="board">
-        <div>
-          {this.renderTile(0)}
-          {this.renderTile(3)}
-          {this.renderTile(6)}
-        </div>
-        <div>
-          {this.renderTile(1)}
-          {this.renderTile(4)}
-          {this.renderTile(7)}
-        </div>
-        <div>
-          {this.renderTile(2)}
-          {this.renderTile(5)}
-          {this.renderTile(8)}
-        </div>
-      </div>
-    );
-  }
+    //Render
+    render() {
+        return (
+            <div className="board">
+                <div>
+                    {this.renderTile(0)}
+                    {this.renderTile(3)}
+                    {this.renderTile(6)}
+                </div>
+                <div>
+                    {this.renderTile(1)}
+                    {this.renderTile(4)}
+                    {this.renderTile(7)}
+                </div>
+                <div>
+                    {this.renderTile(2)}
+                    {this.renderTile(5)}
+                    {this.renderTile(8)}
+                </div>
+            </div>
+        );
+    }
 };
 
 export default class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {};
-  }
+    constructor(props){
+        super(props);
+        this.state = {};
+    }
 
-  render(){
-    return (
-      <div>
-        <Message/>
-        <Board/>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <Message />
+                <Board />
+            </div>
+        );
+    }
 }
