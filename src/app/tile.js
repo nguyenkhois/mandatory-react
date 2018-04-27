@@ -17,9 +17,28 @@ The tile should render with the classes...
 import React from 'react';
 
 export default function Tile(props) {
+    /*callback: tileId -> props.fnOnClick(props.tileId)
+      props: int - props.tileId, 
+             array - props.board
+    */
+    let objTile = { styleMain:'tile', styleSub: '', text: '' };
+
+    switch(props.board[props.tileId]){
+        case 1:
+            objTile.styleSub = 'plr1';
+            objTile.text = 'X';
+            break;
+        case 2:
+            objTile.styleSub = 'plr2';
+            objTile.text = 'O';
+            break;
+        default:
+            break;
+    }
+    
     return (
-        <div className="tile" onClick={() => alert(props.tileId)}>
-            {props.tileId}
+        <div className={objTile.styleMain + ' ' + objTile.styleSub} onClick={()=>props.fnOnClick(props.tileId)}>
+            {objTile.text}
         </div>
     );
 }

@@ -29,7 +29,7 @@
   "scripts": {
     "copypublic": "node setupoutput",
     "build": "npm run copypublic && webpack",
-    "start:dev": "npm run copypublic && webpack-dev-server",
+    "start": "npm run copypublic && webpack-dev-server",
     "test": "jest test/* --notify",
     "copystyles": "cp ./src/app/styles.css ./public/styles.css",
     "build:production": "webpack --mode production",
