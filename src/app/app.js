@@ -31,6 +31,7 @@ export default class App extends React.Component {
         };
     }
 
+    //Source of this method from https://reactjs.org/tutorial/tutorial.html
     checkWinner(board){
         const lines = [
             [0, 1, 2],
@@ -68,7 +69,7 @@ export default class App extends React.Component {
             //Update the board
             let newBoard = this.state.gameState.board.map((item,index)=> index === tileId && item === 0 ? item = playerClickedId : item);
             
-            //Check winner
+            //Check winner after the board updated
             switch(this.checkWinner(newBoard)){
                 case 1:
                     message = 'plr1won';
@@ -82,6 +83,13 @@ export default class App extends React.Component {
                     break;
             }
 
+            //Check step number for game over            
+            let newStepNumber = this.state.stepNumber + 1;
+            if (!flagGameOver && newStepNumber === 9){
+                flagGameOver = true;
+                message = 'draw';
+            }
+
             //Create the new game state
             let newGameState = { state: message, board: newBoard, line: [] };
 
@@ -91,10 +99,7 @@ export default class App extends React.Component {
                                         gameOver: flagGameOver, 
                                         gameState: newGameState});
             this.setState(newState); //Update the state with new data by using non-mutating methods
-        } else if (!this.state.gameOver){
-            let newGameState = {...this.state.gameState, state: 'draw'};
-            this.setState({gameState: newGameState}); //Update the state's child with new data by using non-mutating methods
-        }        
+        }      
     }
 
     render() {     
