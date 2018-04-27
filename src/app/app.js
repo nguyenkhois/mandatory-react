@@ -31,7 +31,7 @@ export default class App extends React.Component {
         };
     }
 
-    //Source of this method from https://reactjs.org/tutorial/tutorial.html
+    //Original source of this method from https://reactjs.org/tutorial/tutorial.html
     checkWinner(board){        
         const lines = [
             [0, 1, 2],
@@ -46,7 +46,10 @@ export default class App extends React.Component {
           for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
             if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                let objWinInfo = {line: lines[i], playerId: board[a]};
+                let objWinInfo = {
+                    line: lines[i], 
+                    playerId: board[a]
+                };
               return objWinInfo
             }
           }
@@ -55,12 +58,13 @@ export default class App extends React.Component {
 
     handleTileClick(tileId){        
         if (!this.state.gameOver && this.state.gameState.board.filter(item=>item === 0).length > 0){
-            let playerClickedId = 0; //gets the current userId who has clicked
+            let playerClickedId = 0; //gets the userId who has clicked
             let message = ''; //gets the game state even the next player who play now in a string for display message
             
             let flagGameOver = this.state.gameOver;
             let newLine = this.state.gameState.line;
 
+            //Check whose turn to play
             if (this.state.stepNumber % 2){
                 playerClickedId = 2; 
                 message = 'plr1';
@@ -95,11 +99,15 @@ export default class App extends React.Component {
             let newStepNumber = this.state.stepNumber + 1;
             if (!flagGameOver && newStepNumber === 9){
                 flagGameOver = true;
-                message = 'draw';
+                message = 'draw'; //game over
             }
 
             //Create the new game state
-            let newGameState = { state: message, board: newBoard, line: newLine };
+            let newGameState = { 
+                state: message, 
+                board: newBoard, 
+                line: newLine 
+            };
 
             //Update the apllication state
             let newState = Object.assign({}, this.state, 
