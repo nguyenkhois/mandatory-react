@@ -15,9 +15,9 @@ View more information om Webpack Dev Server issues when you have problems on Win
 * Run `npm install` to install all needed packages
 
 ## Using
-* Run `npm start` or `npm run start` to start your local web server at `localhost:9000`
-* Run `npm run build` to build your *.js files to `dist` folder
-* Run `npm run build:all` to build all your files (*.js and styles.css) with `--mode production` to `dist` folder
+* Run `npm start` or `npm run start` to start your local web server at `localhost:3000`
+* Run `npm run build` to build your *.js files to `output` folder
+* Run `npm run build:all` to build all your files (*.js and styles.css) with `--mode production` to `output` folder
 
 ## References
 * [Tutorial: Intro To React](https://reactjs.org/tutorial/tutorial.html)
