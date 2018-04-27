@@ -32,7 +32,7 @@ export default class App extends React.Component {
     }
 
     //Source of this method from https://reactjs.org/tutorial/tutorial.html
-    checkWinner(board){
+    checkWinner(board){        
         const lines = [
             [0, 1, 2],
             [3, 4, 5],
@@ -46,7 +46,8 @@ export default class App extends React.Component {
           for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
             if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-              return board[a];
+                let objWinInfo = {line: lines[i], playerId: board[a]};
+              return objWinInfo
             }
           }
           return null;
@@ -56,7 +57,9 @@ export default class App extends React.Component {
         if (!this.state.gameOver && this.state.gameState.board.filter(item=>item === 0).length > 0){
             let playerClickedId = 0; //gets the current userId who has clicked
             let message = ''; //gets the game state even the next player who play now in a string for display message
-            let flagGameOver = false;
+            
+            let flagGameOver = this.state.gameOver;
+            let newLine = this.state.gameState.line;
 
             if (this.state.stepNumber % 2){
                 playerClickedId = 2; 
@@ -70,18 +73,23 @@ export default class App extends React.Component {
             let newBoard = this.state.gameState.board.map((item,index)=> index === tileId && item === 0 ? item = playerClickedId : item);
             
             //Check winner after the board updated
-            switch(this.checkWinner(newBoard)){
-                case 1:
-                    message = 'plr1won';
-                    flagGameOver = true;
-                    break;
-                case 2:
-                    message = 'plr2won';
-                    flagGameOver = true;
-                    break;
-                default:
-                    break;
-            }
+            let winnerInfo = this.checkWinner(newBoard);
+            if (winnerInfo !== null){
+                switch(winnerInfo.playerId){
+                    case 1:
+                        message = 'plr1won';
+                        flagGameOver = true;
+                        newLine = winnerInfo.line;
+                        break;
+                    case 2:
+                        message = 'plr2won';
+                        flagGameOver = true;
+                        newLine = winnerInfo.line;
+                        break;
+                    default:
+                        break;
+                }
+            }            
 
             //Check step number for game over            
             let newStepNumber = this.state.stepNumber + 1;
@@ -91,7 +99,7 @@ export default class App extends React.Component {
             }
 
             //Create the new game state
-            let newGameState = { state: message, board: newBoard, line: [] };
+            let newGameState = { state: message, board: newBoard, line: newLine };
 
             //Update the apllication state
             let newState = Object.assign({}, this.state, 
@@ -108,6 +116,7 @@ export default class App extends React.Component {
                 <Message messageString={this.state.gameState.state}/>
                 <Board fnHandleTileClick={(tileId)=>this.handleTileClick(tileId)} 
                     currentBoard={this.state.gameState.board}
+                    line={this.state.gameState.line}
                 />                
                 {console.log(this.state) /*For Testing purpose*/}
             </div>
@@ -121,6 +130,7 @@ class Board extends React.Component {
             <Tile tileId={id} 
                 fnOnClick={(id)=>this.props.fnHandleTileClick(id)}
                 board={this.props.currentBoard}
+                line={this.props.line}
             />
         )
     }
