@@ -1,5 +1,26 @@
-# mandatory-react
-Mandatory React
+# Mandatory React - Tic-Tac-Toe game
+This web application created by HTML5, CSS3, React 16.2.3 ([View online demo](https://nguyenkhois.github.io/mandatory-react/public/index.html))
+
+## Compatibility
+Build environment is compatible with:
+* Windows
+* MacOS
+* Debian
+
+Webpack Dev Server reload automatically your web browser whenever a change is made to one of your files.
+
+View more information om Webpack Dev Server issues when you have problems on Windows. [No spaces? No error](https://github.com/webpack/webpack-dev-server/issues/1373)
+
+## Installation
+* Run `npm install` to install all needed packages
+
+## Using
+* Run `npm start` or `npm run start` to start your local web server at `localhost:9000`
+* Run `npm run build` to build your *.js files to `dist` folder
+* Run `npm run build:all` to build all your files (*.js and styles.css) with `--mode production` to `dist` folder
 
 ## References
+* [Tutorial: Intro To React](https://reactjs.org/tutorial/tutorial.html)
 * [The Power Of Not Mutating Data](https://reactjs.org/docs/optimizing-performance.html#the-power-of-not-mutating-data)
+* [Non-mutating methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Accessor_methods)
+* [Expressions and operators in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators)
