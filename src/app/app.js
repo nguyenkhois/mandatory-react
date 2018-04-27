@@ -20,8 +20,9 @@ and all tiles within an element with a `board` CSS class.
 export default class App extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
+        this.state = {            
             stepNumber: 0, //maximum 9 teps
+            gameOver: false, //game over or must be locked
             gameState: {
                 state: 'plr1',
                 board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -30,31 +31,69 @@ export default class App extends React.Component {
         };
     }
 
-    handleTileClick(tileId){
-        if (this.state.gameState.board.filter(item=>item === 0).length > 0){
+    checkWinner(board){
+        const lines = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+          ];
+          for (let i = 0; i < lines.length; i++) {
+            const [a, b, c] = lines[i];
+            if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+              return board[a];
+            }
+          }
+          return null;
+    }
+
+    handleTileClick(tileId){        
+        if (!this.state.gameOver && this.state.gameState.board.filter(item=>item === 0).length > 0){
             let playerClickedId = 0; //gets the current userId who has clicked
-            let messageString = ''; //gets the game state even the next player who play now in a string for display message
+            let message = ''; //gets the game state even the next player who play now in a string for display message
+            let flagGameOver = false;
+
             if (this.state.stepNumber % 2){
                 playerClickedId = 2; 
-                messageString = 'plr1';
+                message = 'plr1';
             } else {
                 playerClickedId = 1;
-                messageString = 'plr2';
+                message = 'plr2';
             }
 
             //Update the board
             let newBoard = this.state.gameState.board.map((item,index)=> index === tileId && item === 0 ? item = playerClickedId : item);
             
-            //Update the game state even the next player who play now
-            let newGameState = { state: messageString, board: newBoard, line: [] };
+            //Check winner
+            switch(this.checkWinner(newBoard)){
+                case 1:
+                    message = 'plr1won';
+                    flagGameOver = true;
+                    break;
+                case 2:
+                    message = 'plr2won';
+                    flagGameOver = true;
+                    break;
+                default:
+                    break;
+            }
+
+            //Create the new game state
+            let newGameState = { state: message, board: newBoard, line: [] };
 
             //Update the apllication state
-            let newState = Object.assign({}, this.state, {stepNumber: this.state.stepNumber + 1, gameState: newGameState});
-            this.setState(newState);
-        } else {
-            //let newGameState = Object.assign({},this.state.gameState, {state: 'draw'}); //Clone a copy of state's child
-            let newGameState = {...this.state.gameState, state: 'draw'};// Clone by an other way but get same result
-            this.setState({gameState: newGameState}); //Update the state's child with new data
+            let newState = Object.assign({}, this.state, 
+                                        {stepNumber: this.state.stepNumber + 1, 
+                                        gameOver: flagGameOver, 
+                                        gameState: newGameState});
+            this.setState(newState); //Update the state with new data by using non-mutating methods
+        } else if (!this.state.gameOver){
+            let newGameState = {...this.state.gameState, state: 'draw'};
+            this.setState({gameState: newGameState}); //Update the state's child with new data by using non-mutating methods
         }        
     }
 
@@ -64,8 +103,7 @@ export default class App extends React.Component {
                 <Message messageString={this.state.gameState.state}/>
                 <Board fnHandleTileClick={(tileId)=>this.handleTileClick(tileId)} 
                     currentBoard={this.state.gameState.board}
-                />
-                
+                />                
                 {console.log(this.state) /*For Testing purpose*/}
             </div>
         )
