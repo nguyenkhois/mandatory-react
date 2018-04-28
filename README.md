@@ -7,17 +7,16 @@ Build environment is compatible with:
 * MacOS
 * Debian
 
-Webpack Dev Server reload automatically your web browser whenever a change is made to one of your files.
+Webpack Dev Server reload automatically your web browser whenever a change is made to one of your files (*.js or *.css).
 
-View more information om Webpack Dev Server issues when you have problems on Windows. [No spaces? No error](https://github.com/webpack/webpack-dev-server/issues/1373)
+View more information om Webpack Dev Server issues when you have problems on Windows. Solution is... [No spaces? No error](https://github.com/webpack/webpack-dev-server/issues/1373)
 
 ## Installation
 * Run `npm install` to install all needed packages
 
 ## Using
 * Run `npm start` or `npm run start` to start your local web server at `localhost:3000`
-* Run `npm run build` to build your *.js files to `output` folder
-* Run `npm run build:all` to build all your files (*.js and styles.css) with `--mode production` to `output` folder
+* Run `npm run build:all` to build all your files (*.js and styles.css) with `--mode production` to `output` and `public` folders.
 
 ## References
 * [Tutorial: Intro To React](https://reactjs.org/tutorial/tutorial.html)

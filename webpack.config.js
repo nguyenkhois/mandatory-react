@@ -34,7 +34,7 @@ module.exports = env => ({
     }
   },
   plugins: [
-    new webpack.DefinePlugin({'process.env.NODE_ENV':JSON.stringify('development')}),
+    new webpack.DefinePlugin({'process.env.NODE_ENV':JSON.stringify('production')}),
     new WebpackNotifierPlugin({alwaysNotify: true}),
   ]
 });
