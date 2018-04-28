@@ -15,7 +15,6 @@ test('makeMove() - Case 1 - First move', () => {
     expect(initial).toEqual(newGame()); // testing we didn't mutate entry state
 });
 
-// ...more tests to follow here! 
 //Case 2
 test('makeMove() - Case 2 - Player 1 won', () => {
     const initial = {
