@@ -11,10 +11,10 @@ export default function Message(props) {
     let message = '';
     switch(props.messageString){
         case 'plr1':
-            message = 'Player 1 play now';
+            message = 'Player 1 to play';
             break;
         case 'plr2':
-            message = 'Player 2 play now';
+            message = 'Player 2 to play';
             break;
         case 'plr1won':
             message = 'Player 1 win';
