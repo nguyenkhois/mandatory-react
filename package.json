@@ -31,9 +31,11 @@
     "build": "npm run copypublic && webpack",
     "start": "npm run copypublic && webpack-dev-server",
     "test": "jest test/* --notify",
-    "copystyles": "cp ./src/app/styles.css ./public/styles.css",
-    "build:production": "webpack --mode production",
-    "build:all": "npm run copystyles && npm run copypublic && npm run build:production"
+
+    "output:styles": "cp ./src/app/styles.css ./output/styles.css",
+    "output:production": "webpack --mode production",
+    "publish": "cp -r ./output/. ./public/",
+    "build:all": "npm run output:styles && npm run output:production && npm run publish"
   },
   "keywords": [
     "mandatory",
