@@ -49,4 +49,5 @@ an unchanged game will be returned.
 
 export const makeMove = (game, pos) => {
     // ...to be implemented!
+    //I don't use /K
 }
