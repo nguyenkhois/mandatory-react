@@ -77,7 +77,7 @@ export const makeMove = (objGame, position) => {
         - a position
       Output: a new game object or nothing
     */
-    if (!objGame.gameOver && objGame.gameBoard.filter(item=>item === 0).length > 0 && objGame.gameBoard[position] === 0){
+    if (!objGame.gameOver && objGame.gameBoard[position] === 0){
         let playerClickedId = 0;
         let messageState = ''; //gets the game state for display message
         
