@@ -9,7 +9,7 @@ Build environment is compatible with:
 
 Webpack Dev Server reload automatically your web browser whenever a change is made to one of your files (*.js or *.css).
 
-View more information om Webpack Dev Server issues when you have problems on Windows. Solution is... [No spaces? No error](https://github.com/webpack/webpack-dev-server/issues/1373)
+View more information om Webpack Dev Server issues when you have problems during startup your local web server on Windows. Solution is... [No spaces? No error](https://github.com/webpack/webpack-dev-server/issues/1373)
 
 ## Installation
 * Run `npm install` to install all needed packages
