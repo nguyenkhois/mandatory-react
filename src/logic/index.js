@@ -47,7 +47,87 @@ It will return a new game object. If the move was invalid
 an unchanged game will be returned.
 */
 
-export const makeMove = (game, pos) => {
+//This function checkWinner() based on the original source from https://reactjs.org/tutorial/tutorial.html
+function checkWinner(board) {
+    let objWinInfo = { line: [], playerId: 0 };
+    const lines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+    for (let i = 0; i < lines.length; i++) {
+        const [a, b, c] = lines[i];
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+            return { ...objWinInfo, line: lines[i], playerId: board[a] }
+        }
+    }
+    return objWinInfo
+}
+
+export const makeMove = (objGame, position) => {
     // ...to be implemented!
-    //I don't use /K
+    //It returns a new game object or nothing (null)
+    /*Inputs:
+        - objGame
+        - a position
+      Output: a new game object or nothing
+    */
+    if (!objGame.gameOver && objGame.gameBoard.filter(item=>item === 0).length > 0 && objGame.gameBoard[position] === 0){
+        let playerClickedId = 0;
+        let messageState = ''; //gets the game state for display message
+        
+        let gameOver = objGame.gameOver;
+        let winLine = objGame.winLine;
+
+        //Check whose turn to play
+        if (objGame.stepNumber % 2){
+            playerClickedId = 2; //the playerId who has clicked
+            messageState = 'plr1'; //the next player will play
+        } else {
+            playerClickedId = 1;
+            messageState = 'plr2';
+        }
+
+        //Update the game board after one player has clicked
+        let newBoard = objGame.gameBoard.map((item,index)=> index === position && item === 0 ? item = playerClickedId : item);
+        
+        //Find the winner after the game board updated
+        let winnerInfo = checkWinner(newBoard);
+        switch(winnerInfo.playerId){
+            case 1:
+                messageState = 'plr1won';
+                gameOver = true;
+                winLine = winnerInfo.line;
+                break;
+            case 2:
+                messageState = 'plr2won';
+                gameOver = true;
+                winLine = winnerInfo.line;
+                break;
+            default:
+                break;
+        }            
+
+        //Check step number for game over            
+        let currentStepNumber = objGame.stepNumber + 1;
+        if (currentStepNumber === 9 && !gameOver){
+            gameOver = true; //set game state to game over
+            messageState = 'draw'; //display message for game over
+        }
+
+        //Update the apllication state
+        let newState = Object.assign({}, objGame, 
+                                    { gameState: messageState,
+                                    gameBoard: newBoard,
+                                    winLine: winLine,
+                                    gameOver: gameOver,  
+                                    stepNumber: currentStepNumber});
+        return newState
+    }
+    return null
 }
