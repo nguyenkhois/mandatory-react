@@ -33,7 +33,7 @@ export default class App extends React.Component {
         this.state = newGame();
     }
 
-    //This method checkWinner() based on original source from https://reactjs.org/tutorial/tutorial.html
+    //This method checkWinner() based on the original source from https://reactjs.org/tutorial/tutorial.html
     checkWinner(board) {
         let objWinInfo = { line: [], playerId: 0 };
         const lines = [
