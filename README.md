@@ -1,6 +1,10 @@
 # Mandatory React - Tic-Tac-Toe game
 This web application created by HTML5, CSS3, React ([View online demo](https://nguyenkhois.github.io/mandatory-react/public/index.html))
 
+## Screenshots
+![Screenshot - App](src/images/screenshot.png)
+![Screenshot - Test](src/images/screenshot-test.png)
+
 ## Compatibility
 Build environment is compatible with:
 * Windows
