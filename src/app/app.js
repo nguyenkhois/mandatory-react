@@ -33,9 +33,9 @@ export default class App extends React.Component {
         this.state = newGame();
     }
 
-    //Original source of this method from https://reactjs.org/tutorial/tutorial.html
-    checkWinner(board){
-        let objWinInfo = {line: [], playerId: 0};
+    //This method checkWinner() based on original source from https://reactjs.org/tutorial/tutorial.html
+    checkWinner(board) {
+        let objWinInfo = { line: [], playerId: 0 };
         const lines = [
             [0, 1, 2],
             [3, 4, 5],
@@ -45,14 +45,14 @@ export default class App extends React.Component {
             [2, 5, 8],
             [0, 4, 8],
             [2, 4, 6]
-          ];
-          for (let i = 0; i < lines.length; i++) {
+        ];
+        for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
             if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                return {...objWinInfo, line: lines[i], playerId: board[a]}
+                return { ...objWinInfo, line: lines[i], playerId: board[a] }
             }
-          }
-          return objWinInfo
+        }
+        return objWinInfo
     }
 
     handlePlayAgain(e){
