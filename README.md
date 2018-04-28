@@ -17,6 +17,7 @@ View more information om Webpack Dev Server issues when you have problems during
 ## Using
 * Run `npm start` or `npm run start` to start your local web server at `localhost:3000`
 * Run `npm run build:all` to build all your files (*.js and styles.css) with `--mode production` to `output` and `public` folders.
+* Open your web browser console to view on what happened during this app running.
 
 ## References
 * [Tutorial: Intro To React](https://reactjs.org/tutorial/tutorial.html)
