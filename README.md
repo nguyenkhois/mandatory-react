@@ -22,7 +22,7 @@ View more information om Webpack Dev Server issues when you have problems during
 * Run `npm run build:all` to build all your files (*.js and styles.css) with `--mode production` to `output` and `public` folders.
 * Open your web browser console to view on what happened during this app running.
 
-## Test your code
+## Testing your code with Jest
 Run `npm run test` and it will run tests from this file /test/logic.spec.js. View on [Jest's website](https://facebook.github.io/jest/) for more information.
 
 ![Screenshot - Test](src/images/screenshot-test.png)

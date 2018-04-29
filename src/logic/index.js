@@ -87,7 +87,7 @@ export const makeMove = (objGame, position) => {
         //Check whose turn to play
         if (objGame.stepNumber % 2){
             playerClickedId = 2; //the playerId who has clicked
-            messageState = 'plr1'; //the next player will play
+            messageState = 'plr1'; //the next player to play
         } else {
             playerClickedId = 1;
             messageState = 'plr2';
