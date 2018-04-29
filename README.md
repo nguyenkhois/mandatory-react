@@ -3,7 +3,6 @@ This web application created by HTML5, CSS3, React ([View online demo](https://n
 
 ## Screenshots
 ![Screenshot - App](src/images/screenshot.png)
-![Screenshot - Test](src/images/screenshot-test.png)
 
 ## Compatibility
 Build environment is compatible with:
@@ -22,6 +21,11 @@ View more information om Webpack Dev Server issues when you have problems during
 * Run `npm start` or `npm run start` to start your local web server at `localhost:3000`
 * Run `npm run build:all` to build all your files (*.js and styles.css) with `--mode production` to `output` and `public` folders.
 * Open your web browser console to view on what happened during this app running.
+
+## Test your code
+Run `npm run test` and it will run tests from this file /test/logic.spec.js. View on [Jest's website](https://facebook.github.io/jest/) for more information.
+
+![Screenshot - Test](src/images/screenshot-test.png)
 
 ## References
 * [Tutorial: Intro To React](https://reactjs.org/tutorial/tutorial.html)
