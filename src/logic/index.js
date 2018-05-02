@@ -73,9 +73,9 @@ export const makeMove = (objGame, position) => {
     // ...to be implemented!
     //It returns a new game object or nothing (null)
     /*Inputs:
-        - objGame
+        - an objGame
         - a position
-      Output: a new game object or nothing
+      Output: a new updated objGame or nothing
     */
     if (!objGame.gameOver && objGame.gameBoard[position] === 0){
         let playerClickedId = 0;
@@ -93,7 +93,7 @@ export const makeMove = (objGame, position) => {
             messageState = 'plr2';
         }
 
-        //Update the game board after one player has clicked
+        //Update the game board whenever a player has clicked
         let newBoard = objGame.gameBoard.map((item,index)=> index === position && item === 0 ? item = playerClickedId : item);
         
         //Find the winner after the game board updated
@@ -116,18 +116,17 @@ export const makeMove = (objGame, position) => {
         //Check step number for game over            
         let currentStepNumber = objGame.stepNumber + 1;
         if (currentStepNumber === 9 && !gameOver){
-            gameOver = true; //set game state to game over
+            gameOver = true; //set the game state to game over
             messageState = 'draw'; //display message for game over
         }
 
-        //Update the apllication state
-        let newState = Object.assign({}, objGame, 
-                                    { gameState: messageState,
-                                    gameBoard: newBoard,
-                                    winLine: winLine,
-                                    gameOver: gameOver,  
-                                    stepNumber: currentStepNumber});
-        return newState
+        //Returns the new updated state
+        return Object.assign({}, objGame,
+                                { gameState: messageState,
+                                gameBoard: newBoard,
+                                winLine: winLine,
+                                gameOver: gameOver,
+                                stepNumber: currentStepNumber});
     }
     return null
-}
+};

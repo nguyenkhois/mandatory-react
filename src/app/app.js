@@ -25,6 +25,7 @@ export default class App extends React.Component {
     }
 
     handlePlayAgain(e){
+        e.preventDefault();
         this.setState(newGame());
     }
 
@@ -77,6 +78,6 @@ class Board extends React.Component {
                     {this.renderTile(8)}
                 </div>
             </div>
-        );
+        )
     }
-};
+}
