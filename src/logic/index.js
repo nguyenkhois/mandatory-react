@@ -75,7 +75,7 @@ export const makeMove = (objGame, position) => {
     /*Inputs:
         - an objGame
         - a position
-      Output: a new updated objGame or nothing
+      Output: an new updated objGame or nothing (null)
     */
     if (!objGame.gameOver && objGame.gameBoard[position] === 0){
         let playerClickedId = 0;
@@ -96,7 +96,7 @@ export const makeMove = (objGame, position) => {
         //Update the game board whenever a player has clicked
         let newBoard = objGame.gameBoard.map((item,index)=> index === position && item === 0 ? item = playerClickedId : item);
         
-        //Find the winner after the game board updated
+        //Find the winner whenever the game board updated
         let winnerInfo = checkWinner(newBoard);
         switch(winnerInfo.playerId){
             case 1:
